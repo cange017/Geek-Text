@@ -1,6 +1,7 @@
 """
 Mode Log
 1/25 Miguel defined Http request for home and books URLs
+1/26 Omar defined login 
 """
 
 from django.shortcuts import render
@@ -15,5 +16,6 @@ def books(request):
     books = Book.objects.all()
     return render(request, 'books.html', {'books':books})
 
-
+def login(request):
+     return render(request, 'login.html')
 

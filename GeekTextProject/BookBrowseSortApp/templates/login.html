@@ -1,0 +1,22 @@
+ <!-- Mod Log:
+
+    1/26 Omar use python and inheritance to create login page
+-->
+
+{% extends 'base.html' %}
+
+{%block body%}
+
+<h1>Welcome</h1>
+<div class = "container">
+    <p>
+        You can login here!
+    </p>
+    <h2>Login</h2>
+    <form method="post">
+        {%csrf_token %}
+        {{form.as_p }}
+        <button type ="submit">Login</button>
+    </form>
+    </div>
+{%endblock%}
