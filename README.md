@@ -1,33 +1,36 @@
 # Geek-Text
 
-### Download repository on GitHub.com to our machine
+### 1. Download repository on GitHub.com to our machine
 git clone <Geek-Text repository link>
 
-### Change into the `repo` directory
+### 2. Change into the `repo` directory
 cd Geek-Text
 
-### Geek-Text has two branches - master and development (all changes will be made here)
+### 3. Geek-Text has two branches - master and development (all changes will be made here)
 git branch -a
 
-### Checkout remote branch like development
+### 4. Checkout remote branch like development
 git checkout development
 
-### Look at all your local branches and see the one you are working on with *
+### 5. Look at all your local branches and see the one you are working on with *
 git branch
 
-### Create a new branch to store any new changes
+### 6. Create a new branch to store any new changes
 git branch <branch-name>
 
-### Switch to that branch (line of development)
+### 7. Switch to that branch (line of development)
 git checkout <branch-name>
 
-### Make changes
+### 8. Make changes and see them in VS Code 
 
-### Stage the changed files
+### 9. Stage the changed files
 git add file1.md file2.md
 
-### Take a snapshot of the staging area (anything that's been added)
+### 10. Take a snapshot of the staging area (anything that's been added)
 git commit -m "my snapshot"
 
-### Push changes to github
+### 11. Push changes to github
 git push --set-upstream origin my-branch
+
+### 12. Pull all changes before pushing
+git pull
