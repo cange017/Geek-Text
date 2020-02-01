@@ -7,7 +7,11 @@ Mode Log
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Book
+from django.shortcuts import render, redirect
 from .forms import RegistrationForm
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserChangeForm
+from django.contrib.auth.decorators import login_required
 
 def home(request):
      return render(request, 'home.html')
@@ -17,18 +21,4 @@ def books(request):
     books = Book.objects.all()
     return render(request, 'books.html', {'books':books})
 
-def login(request):
-     return render(request, 'login.html')
-
-def register(request):
-     if request.method == 'POST':
-          form = RegistrationForm(request.POST)
-          if form.is_valid():
-               form.save()
-               return redirect('/login')
-     else:
-          form= RegistrationForm()
-
-          args = {'form': form}
-          return render(request, 'register.html', args)
 
