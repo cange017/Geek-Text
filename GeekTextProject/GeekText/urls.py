@@ -15,7 +15,7 @@ from django.contrib.auth.views import LoginView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-   # url(r'^$', views.home, name='home'),
+    url(r'^$', views.home, name='home'),
     url(r'^books/', views.books, name='books'),
 
     path('accounts/', include('allauth.urls')),
