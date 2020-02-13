@@ -31,7 +31,7 @@ class Author(models.Model):
         return self.name
 
 class Book(models.Model):
-    image = models.ImageField(upload_to='images/')
+    image = models.ImageField(upload_to='staticImages')
     title = models.CharField(max_length=50)
     author = models.ForeignKey('Author', on_delete=models.CASCADE) #Author needs to be foreing key: ForeingKey? Tied to Author's biography
     rating = models.IntegerField(null=True) #Static variable as a counter
