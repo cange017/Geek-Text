@@ -16,9 +16,18 @@ from django.contrib.auth.views import LoginView
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^$', views.home, name='home'),
+    url(r'^home/', views.home, name = 'home'),
     url(r'^books/', views.books, name='books'),
-
+    url(r'^cart/', views.cart, name='cart'),
+    url(r'^checkout/', views.checkout, name='checkout'),
+    url(r'^wishlist/', views.wishlist, name='wishlist'),
+    url(r'^myaccount/', views.myaccount, name='myaccount'),
+    url(r'^aboutt/', views.about, name='about'),
+    #path('books/<int:id>', views.details, name='details'),
     path('accounts/', include('allauth.urls')),
 
-    url(r'^home/', views.home, name = 'home'),
-]+ static(settings.STATIC_URL, document_root= settings.STATIC_ROOT)
+    
+]
+
+urlpatterns += static(settings.STATIC_URL, document_root= settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
