@@ -17,9 +17,8 @@ def home(request):
      books = Book.objects.all().order_by('releaseDate')[:4]
      return render(request, 'home.html', {'books': books})
  
-
 def books(request):
-    books = Book.objects.all()
+    books = Book.objects.all().order_by('title')
     return render(request, 'book-grid.html', {'books': books})
 
 def wishlist(request):
@@ -37,7 +36,13 @@ def checkout(request):
 def about(request):
     return render(request, 'about.html')
 
-# def details(request, book_id):
-#     books = Book.objects.get(book_id=book_id)
-#     #book_detail = get_object_or_404(Book, pk=book_id)
-#     return render(request, 'book-details.html', {'book': books})
+def details(request):
+    #book = Book.objects.get(id=id)
+    #book_detail = get_object_or_404(Book, pk=book_id)
+    return render(request, 'book-details.html')
+
+# def details(request, primary_key):
+#     book = get_object_or_404(Book, pk=primary_key)
+#     return render(request, 'book-details.html', context={'book': book})
+
+

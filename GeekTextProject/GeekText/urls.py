@@ -18,11 +18,13 @@ urlpatterns = [
     url(r'^$', views.home, name='home'),
     url(r'^home/', views.home, name = 'home'),
     url(r'^books/', views.books, name='books'),
+    url(r'^details/', views.details, name='details'),
     url(r'^cart/', views.cart, name='cart'),
     url(r'^checkout/', views.checkout, name='checkout'),
     url(r'^wishlist/', views.wishlist, name='wishlist'),
     url(r'^myaccount/', views.myaccount, name='myaccount'),
     url(r'^aboutt/', views.about, name='about'),
+    #path('books/<int:pk>/', views.details, name='details'),
     #path('books/<int:id>', views.details, name='details'),
     path('accounts/', include('allauth.urls')),
 

@@ -42,9 +42,10 @@
 					<div class="product product__style--3">
 						<div class="col-lg-3 col-md-4 col-sm-6 col-12">
 							<div class="product__thumb">
-								<a class="first__img" href="single-product.html"><img src="images/books/1.jpg" alt="product image"></a>
-								<a class="second__img animation1" href="single-product.html"><img src="images/books/2.jpg" alt="product image"></a>
-								
+								{% if book.image %}
+								<a class="first__img" href="{% url 'details'%}"><img src="{{ book.image.url }}" alt="product image"></a>
+								<a class="second__img animation1" href="{% url 'details'%}"><img src="{{ book.image.url }}" alt="product image"></a>
+								{% endif %}
 							</div>
 							<div class="product__content content--center">
 								<h4><a href="single-product.html">{{book.title}}</a></h4>
