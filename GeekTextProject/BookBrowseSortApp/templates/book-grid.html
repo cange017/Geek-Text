@@ -102,12 +102,11 @@
 			                        <div class="orderby__wrapper">
 			                        	<span>Sort By</span>
 			                        	<select class="shot__byselect">
-			                        		<option>Default sorting</option>
-			                        		<option>HeadPhone</option>
-			                        		<option>Furniture</option>
-			                        		<option>Jewellery</option>
-			                        		<option>Handmade</option>
-			                        		<option>Kids</option>
+			                        		<option>Default sorting (title)</option>
+			                        		<option>Author</option>
+			                        		<option>Price</option>
+			                        		<option>Book rating</option>
+			                        		<option>Release date</option>
 			                        	</select>
 			                        </div>
 		                        </div>
@@ -120,8 +119,10 @@
 	        						<!-- Start Single Product -->
 		        					<div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
 			        					<div class="product__thumb">
-											<a class="first__img" href="#"><img src="images/books/2.jpg" alt="product image"></a>
-											<a class="second__img animation1" href="#"><img src="images/books/2.jpg" alt="product image"></a>
+											{% if book.image %}
+	        								<a class="first__img" href="{% url 'details'%}"><img src="{{book.image.url}}" alt="product image"></a>
+	        								<a class="second__img animation1" href="{% url 'details'%}"><img src="{{book.image.url}}" alt="product image"></a>
+	        								{% endif %}
 										</div>
 										<div class="product__content content--center">
 											<h4><a href="#">{{book.title}}</a></h4>
@@ -160,9 +161,11 @@
 	        						<!-- Start Single Product -->
 	        						<div class="list__view">
 	        							<div class="thumb">
-	        								<a class="first__img" href="#"><img src="images/product/1.jpg" alt="product images"></a>
-	        								<a class="second__img animation1" href="#"><img src="images/product/2.jpg" alt="product images"></a>
-	        							</div>
+											{% if book.image %}
+	        								<a class="first__img" href="{% url 'details'%}"><img src="{{book.image.url}}" alt="product images"></a>
+	        								<a class="second__img animation1" href="{% url 'details'%}"><img src="{{book.image.url}}" alt="product images"></a>
+	        								{% endif %}
+										</div>
 	        							<div class="content">
 	        								<h2><a href="#">{{book.title}}</a></h2>
 	        								<ul class="rating d-flex">
@@ -180,7 +183,6 @@
 	        								<ul class="cart__action d-flex">
 	        									<li class="cart"><a href="cart.html">Add to cart</a></li>
 	        									<li class="wishlist"><a href="cart.html"></a></li>
-	        									<li class="compare"><a href="cart.html"></a></li>
 	        								</ul>
 
 	        							</div>
