@@ -23,20 +23,15 @@
         						<div class="col-lg-6 col-12">
         							<div class="wn__fotorama__wrapper">
 	        							<div class="fotorama wn__fotorama__action" data-nav="thumbs">
-		        							  <a href="1.jpg"><img src="images/product/1.jpg" alt=""></a>
-		        							  <a href="2.jpg"><img src="images/product/2.jpg" alt=""></a>
-		        							  <a href="3.jpg"><img src="images/product/3.jpg" alt=""></a>
-		        							  <a href="4.jpg"><img src="images/product/4.jpg" alt=""></a>
-		        							  <a href="5.jpg"><img src="images/product/5.jpg" alt=""></a>
-		        							  <a href="6.jpg"><img src="images/product/6.jpg" alt=""></a>
-		        							  <a href="7.jpg"><img src="images/product/7.jpg" alt=""></a>
-		        							  <a href="8.jpg"><img src="images/product/8.jpg" alt=""></a>
+											  {% if book.image %}
+		        							  <a><img src="{{book.image.url}}" alt=""></a>
+											  {% endif %}
 	        							</div>
         							</div>
         						</div>
         						<div class="col-lg-6 col-12">
         							<div class="product__info__main">
-        								<h1>Chaz Kangeroo Hoodie</h1>
+        								<h1>{{book.title}}</h1>
         								<div class="product-reviews-summary d-flex">
         									<ul class="rating-summary d-flex">
     											<li><i class="zmdi zmdi-star-outline"></i></li>
@@ -47,11 +42,11 @@
         									</ul>
         								</div>
         								<div class="price-box">
-        									<span>$52.00</span>
+        									<span>${{book.price}}</span>
         								</div>
 										<div class="product__overview">
-        									<p>Ideal for cold-weather training or work outdoors, the Chaz Hoodie promises superior warmth with every wear. Thick material blocks out the wind as ribbed cuffs and bottom band seal in body heat.</p>
-        									<p>Ideal for cold-weather training or work outdoors, the Chaz Hoodie promises superior warmth with every wear. </p>
+											<p>{{book.author}}</p>
+        									<p>{{book.description}}</p>
         								</div>
         								<div class="box-tocart d-flex">
         									<span>Qty</span>
@@ -101,12 +96,8 @@
 	                        	<!-- Start Single Tab Content -->
 	                        	<div class="pro__tab_label tab-pane fade show active" id="nav-details" role="tabpanel">
 									<div class="description__attribute">
-										<p>Ideal for cold-weather training or work outdoors, the Chaz Hoodie promises superior warmth with every wear. Thick material blocks out the wind as ribbed cuffs and bottom band seal in body heat.Ideal for cold-weather training or work outdoors, the Chaz Hoodie promises superior warmth with every wear. Thick material blocks out the wind as ribbed cuffs and bottom band seal in body heat.Ideal for cold-weather training or work outdoors, the Chaz Hoodie promises superior warmth with every wear. Thick material blocks out the wind as ribbed cuffs and bottom band seal in body heat.Ideal for cold-weather training or work outdoors, the Chaz Hoodie promises superior warmth with every wear. Thick material blocks out the wind as ribbed cuffs and bottom band seal in body heat.</p>
-										<ul>
-											<li>• Two-tone gray heather hoodie.</li>
-											<li>• Drawstring-adjustable hood. </li>
-											<li>• Machine wash/dry.</li>
-										</ul>
+										<p>{{book.description}}</p>
+										
 									</div>
 	                        	</div>
 	                        	<!-- End Single Tab Content -->
@@ -114,85 +105,14 @@
 	                        	<div class="pro__tab_label tab-pane fade" id="nav-review" role="tabpanel">
 									<div class="review__attribute">
 										<h1>Customer Reviews</h1>
-										<h2>Hastech</h2>
+										<h2>User1</h2>
 										<div class="review__ratings__type d-flex">
-											<div class="review-ratings">
-												<div class="rating-summary d-flex">
-													<span>Quality</span>
-			    									<ul class="rating d-flex">
-														<li><i class="zmdi zmdi-star"></i></li>
-														<li><i class="zmdi zmdi-star"></i></li>
-														<li><i class="zmdi zmdi-star"></i></li>
-														<li class="off"><i class="zmdi zmdi-star"></i></li>
-														<li class="off"><i class="zmdi zmdi-star"></i></li>
-			    									</ul>
-												</div>
-
-												<div class="rating-summary d-flex">
-													<span>Price</span>
-			    									<ul class="rating d-flex">
-														<li><i class="zmdi zmdi-star"></i></li>
-														<li><i class="zmdi zmdi-star"></i></li>
-														<li><i class="zmdi zmdi-star"></i></li>
-														<li class="off"><i class="zmdi zmdi-star"></i></li>
-														<li class="off"><i class="zmdi zmdi-star"></i></li>
-			    									</ul>
-												</div>
-												<div class="rating-summary d-flex">
-													<span>value</span>
-			    									<ul class="rating d-flex">
-														<li><i class="zmdi zmdi-star"></i></li>
-														<li><i class="zmdi zmdi-star"></i></li>
-														<li><i class="zmdi zmdi-star"></i></li>
-														<li class="off"><i class="zmdi zmdi-star"></i></li>
-														<li class="off"><i class="zmdi zmdi-star"></i></li>
-			    									</ul>
-												</div>
-											</div>
-											<div class="review-content">
-												<p>Hastech</p>
-												<p>Review by Hastech</p>
-												<p>Posted on 11/6/2018</p>
-											</div>
+											<p>{{book.comments}}</p>
 										</div>
 									</div>
 									<div class="review-fieldset">
 										<h2>You're reviewing:</h2>
-										<h3>Chaz Kangeroo Hoodie</h3>
-										<div class="review-field-ratings">
-											<div class="product-review-table">
-												<div class="review-field-rating d-flex">
-													<span>Quality</span>
-													<ul class="rating d-flex">
-														<li class="off"><i class="zmdi zmdi-star"></i></li>
-														<li class="off"><i class="zmdi zmdi-star"></i></li>
-														<li class="off"><i class="zmdi zmdi-star"></i></li>
-														<li class="off"><i class="zmdi zmdi-star"></i></li>
-														<li class="off"><i class="zmdi zmdi-star"></i></li>
-			    									</ul>
-												</div>
-												<div class="review-field-rating d-flex">
-													<span>Price</span>
-													<ul class="rating d-flex">
-														<li class="off"><i class="zmdi zmdi-star"></i></li>
-														<li class="off"><i class="zmdi zmdi-star"></i></li>
-														<li class="off"><i class="zmdi zmdi-star"></i></li>
-														<li class="off"><i class="zmdi zmdi-star"></i></li>
-														<li class="off"><i class="zmdi zmdi-star"></i></li>
-			    									</ul>
-												</div>
-												<div class="review-field-rating d-flex">
-													<span>Value</span>
-													<ul class="rating d-flex">
-														<li class="off"><i class="zmdi zmdi-star"></i></li>
-														<li class="off"><i class="zmdi zmdi-star"></i></li>
-														<li class="off"><i class="zmdi zmdi-star"></i></li>
-														<li class="off"><i class="zmdi zmdi-star"></i></li>
-														<li class="off"><i class="zmdi zmdi-star"></i></li>
-			    									</ul>
-												</div>
-											</div>
-										</div>
+										<h3>{{book.title}}</h3>
 										<div class="review_form_field">
 											<div class="input__box">
 												<span>Nickname</span>
