@@ -1,0 +1,18 @@
+.logo {
+    margin-top: 1%;
+}
+
+div#slideshow {
+    background-image: url(../books2.jpg);
+     /* opacity: 0.3; */
+     background-size: cover;
+     background-repeat: inherit;
+}
+
+.container-fluid {
+    background-color: white;
+}
+
+#about-padding {
+    padding-top: 2%;
+}
