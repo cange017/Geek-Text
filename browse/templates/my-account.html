@@ -1,0 +1,118 @@
+﻿{% extends './base.html' %}
+{% block content %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://bootswatch.com/4/simplex/bootstrap.min.css"/>
+
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="bradcaump__inner text-center">
+					<h2 class="bradcaump-title">My Account</h2>
+					<nav class="bradcaump-content">
+						
+					</nav>
+				</div>
+			</div>
+		</div>
+<!-- End Bradcaump area -->
+<!-- Start My Account Area -->
+				{% if user.is_authenticated %}
+
+								<div class="ml-auto">
+                                    <input type="button" class="btn btn-primary d-none" id="btnDiscard" value="Discard Changes" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="basicInfo-tab" data-toggle="tab" href="#basicInfo" role="tab" aria-controls="basicInfo" aria-selected="true">Basic Info</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="payment-tab" data-toggle="tab" href="#payment" role="tab" aria-controls="payment" aria-selected="false">Payment</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a class="nav-link" id="shipping-tab" data-toggle="tab" href="#shipping" role="tab" aria-controls="shipping" aria-selected="false">Shipping</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content ml-1" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
+                                        
+
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">First Name</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                {{ user.first_name }}
+                                            </div>
+                                        </div>
+                                        <hr />
+
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Last Name</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                {{ user.last_name }}
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        
+                                        
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Username</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                {{ user.username }}
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Email</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                {{ user.email }}
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Home Address</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                
+                                            </div>
+                                        </div>
+                                        <hr />
+
+                                    </div>
+                                    <div class="tab-pane fade" id="payment" role="tabpanel" aria-labelledby="payment-tab">
+                                        Payment info here
+                                    </div>
+									<div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
+                                        Shipping info here
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+				{% else %}
+						</div>
+                        </div>
+						
+					<p><center><font size="+40">Welcome! <a href="{% url 'login' %}" style="color:blue">Please Login</a> </font></center> </p>
+				{% endif %}
+</section>
+<!-- End My Account Area -->
+{% endblock %}
