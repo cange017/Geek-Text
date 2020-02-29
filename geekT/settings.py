@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'browse',
     'creditcards',
+    'bookrating',
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser'
