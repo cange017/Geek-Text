@@ -86,17 +86,69 @@
                                                 <label style="font-weight:bold;">Home Address</label>
                                             </div>
                                             <div class="col-md-8 col-6">
-                                                
+                                                <table>
+													<thead>
+                                                    {% if form%}
+														{% for field in form %}
+															<th>{{ field.label}}</th>
+														{% endfor %}
+													</thead>
+													<tbody>
+														<tr>
+															{% for field in form %}
+																<td>{{ field.value|default_if_none:'' }}</td>
+															{% endfor %}
+                                                    {% endif%}
+														</tr>
+													</tbody>
+												</table>
+                                            
+												<a href="{% url 'address' %}" style="color:blue">Add Address</a>
                                             </div>
                                         </div>
                                         <hr />
 
                                     </div>
                                     <div class="tab-pane fade" id="payment" role="tabpanel" aria-labelledby="payment-tab">
-                                        Payment info here
+											<a href="{% url 'addcard' %}" style="color:blue">Add Payment</a>
+                                        <div class="col-md-8 col-6">
+                                                <table>
+													<thead>
+                                                    {% if form3%}
+														{% for field in form3 %}
+															<th>{{ field.label }}</th>
+														{% endfor %}
+													</thead>
+													<tbody>
+														<tr>
+															{% for field in form3 %}
+																<td>{{ field.value|default_if_none:'' }}</td>
+															{% endfor %}
+                                                    {% endif%}
+														</tr>
+													</tbody>
+												</table>
+                                    </div>
                                     </div>
 									<div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
-                                        Shipping info here
+                                       <a href="{% url 'shipaddress' %}" style="color:blue">Add Shipping Address</a>
+										<div class="col-md-8 col-6">
+                                                <table>
+													<thead>
+                                                    {% if form2%}
+														{% for field in form2 %}
+															<th>{{ field.label}}</th>
+														{% endfor %}
+													</thead>
+													<tbody>
+														<tr>
+															{% for field in form2 %}
+																<td>{{ field.value|default_if_none:'' }}</td>
+															{% endfor %}
+                                                    {% endif%}
+														</tr>
+													</tbody>
+												</table>
                                     </div>
                                 </div>
                             </div>

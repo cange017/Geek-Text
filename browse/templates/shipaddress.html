@@ -4,7 +4,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="bradcaump__inner text-center">
-					<h2 class="bradcaump-title">Login</h2>
+					<h2 class="bradcaump-title">Add Shipping Address</h2>
 					<nav class="bradcaump-content">
 						
 					</nav>
@@ -14,15 +14,13 @@
 	
 <!-- End Bradcaump area -->
 <!-- Start My Account Area -->
-{% if not user.is_authenticated %}
-
 <section class="my_account_area pt--80 pb--55 bg--white">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-6 col-12">
 				<div class="my__account__wrapper">
 
-					<h3 class="account__title">Login</h3>
+					<h3 class="account__title">Add Shipping Address</h3>
 					
 						<div class="account__form">
 							<div class="input__box">
@@ -35,12 +33,12 @@
                                         {{ form }}
                                     </table>
                                     <div class="form__btn">
-                                    <button type="submit">Login</button>
+                                    <button type="submit">Submit</button>
                                     </div>
 
                                 </form>
 							</div>
-							<a class="register" href="{% url 'register' %}" style="color:blue">Don't have an account? Register here!</a>
+							<a class="register" href="{% url 'myaccount' %}" style="color:blue">Back to Account</a>
 						</div>
 					</div>
 				</div>
@@ -48,20 +46,6 @@
 		</div>
 	</div>
 </div>
-
-                {% else %}
-						</div>
-                        </div>
-						
-					<p><center><font size="+20">You are already logged in!  </font>
-                    <form class = "logout-link" action = "{% url 'logout' %}" method = "post">
-												{% csrf_token %}
-												<button type = "submit">Logout</button>
-											</center> </form>
-                    </p>
-
-				
-                {% endif %}
 </section>
 <!-- End My Account Area -->
 {% endblock %}
