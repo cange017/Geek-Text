@@ -35,6 +35,9 @@ urlpatterns = [
     url(r'^register/$', views.register, name='register'),
     path('login/', LoginView.as_view(template_name='login.html'), name='login'),
     url(r'^logout/$', views.logoutView, name = 'logout'),
+    url(r'^address/$', views.address, name = 'address'),
+    url(r'^shipaddress/$', views.shipaddress, name = 'shipaddress'),
+    url(r'^addcard/$', views.addcard, name = 'addcard'),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root= settings.STATIC_ROOT)

@@ -2,13 +2,14 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Book
 from django.shortcuts import render, redirect, get_object_or_404
-from users.forms import RegistrationForm
+from users.forms import RegistrationForm, AddressForm, ShipAddressForm, AddCreditForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserChangeForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse, reverse_lazy
-
+from users.models import Address, ShippingAddress, Payment
+from django.forms import formset_factory
 
 def home(request):
      books = Book.objects.all().order_by('releaseDate')[:4]
@@ -26,7 +27,21 @@ def wishlist(request):
     return render(request, 'wishlist.html')
 
 def myaccount(request):
-   return render(request, 'my-account.html')
+    form = AddressForm()
+    form2 = ShipAddressForm()
+    form3 = AddCreditForm()
+
+    if Address.objects.count()>0:
+        instance = Address.objects.get(pk=1)
+        form = AddressForm(instance=instance)
+    if ShippingAddress.objects.count()>0:
+        instance2 = ShippingAddress.objects.get(pk=1)
+        form2 = ShipAddressForm(instance = instance2)
+    if Payment.objects.count()>0:
+        instance3 = Payment.objects.get(pk=1)
+        form3 = AddCreditForm(instance = instance3)
+
+    return render(request, 'my-account.html', { 'form2':form2, 'form3':form3 }) 
     
 def register(request):
     if request.method == 'POST':
@@ -43,6 +58,39 @@ def logoutView(request):
     if request.method == 'POST':
         logout(request)
         return redirect('home')
+
+def address(request):
+    if request.method =='POST':
+        form = AddressForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('myaccount')
+    else:
+        form = AddressForm()
+        
+    return render(request, 'address.html', {'form': form}) 
+      
+def shipaddress(request):
+    if request.method =='POST':
+        form = ShipAddressForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('myaccount')
+    else:
+        form = ShipAddressForm()
+        
+    return render(request, 'shipaddress.html', {'form': form}) 
+
+def addcard(request):
+    if request.method =='POST':
+        form = AddCreditForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('myaccount')
+    else:
+        form = AddCreditForm()
+        
+    return render(request, 'addcard.html', {'form': form}) 
 
 def cart(request):
     return render(request, 'cart.html')
