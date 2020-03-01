@@ -10,6 +10,11 @@ from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse, reverse_lazy
 from users.models import Address, ShippingAddress, Payment
 from django.forms import formset_factory
+from django.views.generic import TemplateView, ListView#generic templates for search results Book App
+from .models import Book
+from django.db.models import Q
+
+
 
 def home(request):
      books = Book.objects.all().order_by('releaseDate')[:4]
@@ -18,6 +23,20 @@ def home(request):
 def books(request):
     books = Book.objects.all().order_by('title')
     return render(request, 'book-grid.html', {'books': books})
+
+class SearchResultsView(ListView):#ListView,
+    model = Book
+    template_name = 'search_results.html'
+    #queryset = Book.objects.filter(author__name__icontains='Miguel') # new
+    def get_queryset(self): # 
+        
+        query = self.request.GET.get('q')
+        criteria = self.request.GET.get('criteria')
+        object_list = Book.objects.filter(
+             Q(author__name__icontains=query) | Q(title__icontains=query)#author is foreingKey field
+        ).filter ( Q(Publisher__icontains=criteria))
+        return object_list
+  
 
 def details(request, id):
     book_detail = get_object_or_404(Book, id=id)

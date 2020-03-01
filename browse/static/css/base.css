@@ -16,3 +16,18 @@ div#slideshow {
 #about-padding {
     padding-top: 2%;
 }
+
+.rating  {
+   
+    font-size: 30px;
+    color:yellow;
+ }
+
+ .goodRate
+
+.rating > span:hover:before {
+    content: "\2605";
+    position: absolute;
+    color:blue;
+    font-size: 30px;
+ }
