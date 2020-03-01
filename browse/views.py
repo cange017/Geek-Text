@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import Book
+from .models import Book, Author
 from django.shortcuts import render, redirect, get_object_or_404
 from users.forms import RegistrationForm, AddressForm, ShipAddressForm, AddCreditForm
 from django.contrib.auth.models import User
@@ -40,7 +40,12 @@ class SearchResultsView(ListView):#ListView,
 
 def details(request, id):
     book_detail = get_object_or_404(Book, id=id)
+    #print (Author.objects.books.all())
     return render(request, 'book-details.html', {'book': book_detail})
+
+# def books_by_author(self, author):
+#     return Book.objects.filter(author=self.author).values_list(author,flat=True)
+#   a.book_set.all()
 
 def wishlist(request):
     return render(request, 'wishlist.html')

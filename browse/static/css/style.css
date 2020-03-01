@@ -2469,12 +2469,12 @@ nav.menu {
 	  visibility: hidden;
 	  opacity:0;
 	}
-	.product:hover .product__content .action{opacity:1;visibility:visible;}
+	/* .product:hover .product__content .action{opacity:1;visibility:visible;}
 	.product:hover .product__hover--content{opacity:1;visibility:visible;display:block;}
       .product .product__content .action .actions_inner .add_to_links li {
         margin-bottom: 4px;
 		display:inline-block
-		}
+		} */
         .product .product__content .action .actions_inner .add_to_links li a {
           border: 0 none;
 		  margin-right: 8px;
@@ -2494,10 +2494,10 @@ nav.menu {
           .product .product__content .action .actions_inner .add_to_links li a:hover {
             color:#fff;
               background-color: #ce7852; }
-			  .product:hover .product__content h4,.product:hover .product__content ul.prize {
+			  /* .product:hover .product__content h4,.product:hover .product__content ul.prize {
 			  opacity:0;
 			  visibility:hidden;
-			  transition: all 0.2s ease 0s;
+			  transition: all 0.2s ease 0s; */
 			}
 			
             .product .product__content .action .actions_inner .add_to_links li a.quickview:hover {
@@ -2535,7 +2535,7 @@ nav.menu {
         text-overflow: ellipsis;
         text-transform: capitalize;
         white-space: nowrap; }
-.product:hover .product__content .action .actions_inner .add_to_links li:nth-child(1) {
+/* .product:hover .product__content .action .actions_inner .add_to_links li:nth-child(1) {
   -webkit-animation: 300ms ease-in-out 0s normal none 1 running fadeInUp;
           animation: 300ms ease-in-out 0s normal none 1 running fadeInUp;
   opacity: 1;
@@ -2558,7 +2558,7 @@ nav.menu {
 .product:hover .product__thumb a.second__img {
   opacity: 1;
   visibility: visible;
-  width: 100%; }
+  width: 100%; } */
 .rating.rating--yellow li.on i {
   color: #ffa800; }
 .rating li i {
@@ -3954,7 +3954,7 @@ h3.widget-title-modal {
   font-size: 24px;
   font-weight: 700;
   text-transform: uppercase;
-  color: #fff;
+  color: #2e2e2e;
   line-height: 30px; }
 .bradcaump__inner .bradcaump-content {
   padding: 15px 0; }
@@ -3963,11 +3963,11 @@ h3.widget-title-modal {
     font-style: italic;
     font-weight: 400;
     text-transform: capitalize;
-    color: #fff; }
+    color: #2e2e2e; }
     .bradcaump__inner .bradcaump-content .breadcrumb_item.active, .bradcaump__inner .bradcaump-content .breadcrumb_item:hover {
       color: #e59285; }
   .bradcaump__inner .bradcaump-content span.brd-separetor {
-    color: #fff;
+    color: #2e2e2e;
     font-style: italic;
     margin: 0 7px; }
 
