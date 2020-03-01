@@ -22,6 +22,10 @@ def details(request, id):
     book_detail = get_object_or_404(Book, id=id)
     return render(request, 'book-details.html', {'book': book_detail})
 
+# def books_by_author(self, author):
+#     return Book.objects.filter(author=self.author).values_list(author,flat=True)
+#   a.book_set.all()
+
 def wishlist(request):
     return render(request, 'wishlist.html')
 
