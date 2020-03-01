@@ -20,6 +20,7 @@ from django.conf.urls import url
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth.views import LoginView
+from browse.views import SearchResultsView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -38,6 +39,7 @@ urlpatterns = [
     url(r'^address/$', views.address, name = 'address'),
     url(r'^shipaddress/$', views.shipaddress, name = 'shipaddress'),
     url(r'^addcard/$', views.addcard, name = 'addcard'),
+    path('search/', SearchResultsView.as_view(), name='search_results'),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root= settings.STATIC_ROOT)

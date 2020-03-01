@@ -93,7 +93,7 @@
 					
 					<div class="col-lg-9 col-12 order-1 order-lg-2" style="margin-left:auto; margin-right: auto">
 						<div class="row">
-							<form action="{% url 'search_results' %}" method="get" class="form-inline my-2 my-lg-0">
+							<form action="{% url 'books' %}" method="get" class="form-inline my-2 my-lg-0">
 								<select name="criteria" class="form-control" style=margin-right:10px;">
 								  <option value="" selected="selected">Choose here</option>
 								  <option value="pearson">pearson</option>
@@ -133,19 +133,17 @@
         				<div class="tab__container">
 	        				<div class="shop-grid tab-pane fade" id="nav-grid" role="tabpanel">
 	        					<div class="row">
-									{% for book in books %}
+									{% for book in object_list %}
 	        						<!-- Start Single Product -->
 		        					<div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
 			        					<div class="product__thumb">
 											{% if book.image %}
-	        								<a class="first__img" data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><img src="{{book.image.url}}" alt="product images"></a>
-	        								<a class="second__img animation1"  data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><img src="{{book.image.url}}" alt="product images"></a>
+	        								<a class="first__img" href="{% url 'details' book.id%}"><img src="{{book.image.url}}" alt="product image"></a>
+	        								<a class="second__img animation1" href="{% url 'details' book.id%}"><img src="{{book.image.url}}" alt="product image"></a>
 	        								{% endif %}
 										</div>
 										<div class="product__content content--center">
-
 											<h4><a href="{% url 'details' book.id%}">{{book.title}}</a></h4>
-											
 											<ul class="prize d-flex">
 												<li>${{book.price}}</li>
 											</ul>
@@ -177,33 +175,31 @@
 	        				</div>
 	        				<div class="shop-grid tab-pane fade show active" id="nav-list" role="tabpanel">
 	        					<div class="list__view__wrapper">
-									{% for book in books %}
+									{% for book in object_list %}
 	        						<!-- Start Single Product -->
 	        						<div class="list__view">
 	        							<div class="thumb">
 											{% if book.image %}
-	        								<a class="first__img" data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><img src="{{book.image.url}}" alt="product images"></a>
-	        								<a class="second__img animation1"  data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><img src="{{book.image.url}}" alt="product images"></a>
+	        								<a class="first__img" href="{% url 'details' book.id%}"><img src="{{book.image.url}}" alt="product images"></a>
+	        								<a class="second__img animation1" href="{% url 'details' book.id%}"><img src="{{book.image.url}}" alt="product images"></a>
 	        								{% endif %}
 										</div>
 	        							<div class="content">
-											<h2><a href="{% url 'details' book.id%}">{{book.title}}</a></h2>
+                                            <h2><a href="{% url 'details' book.id%}">{{book.title}}</a></h2>
+                                          
 											<strong class="d-block text-gray-dark" style="color:dodgerblue;"> by {{ book.author }}  <strong style="color:slategray;">
 												<span style="color:silver ;"> | </span> {{ book.releaseDate|date }}
 												<span style="color:silver ;"> | </span> <span style="color:tan ;"> {{ book.Publisher }}</span></strong>
 											
 											</strong>
 											</strong>
-	        								
 	        								<ul class="rating d-flex">
-												
-											
-                                                {% for value in books.rating|make_list %}
                                               
+                                                {% for value in books.rating|make_list %}
+                                                
 	        									<li ><span class="rating">☆</span></li> 
                                                 {% endfor %}
-                                               
-											
+                                              
 	        								</ul>
 	        								<ul class="prize__box">
 	        									<li>${{book.price}}</li>
@@ -215,7 +211,15 @@
 	        								</ul>
 
 	        							</div>
-	        						</div>
+                                    </div>
+                                    {%empty %}
+                        <h3><strong class="d-block text-gray-dark">Sorry no books, authors, nor categories were found<br/>
+
+                            <strong class="d-block text-gray-dark">Click on the search button to return to the original book catalog
+                            
+
+                            </strong>
+                        </strong></h3>
 									{% endfor %}
 	        						<!-- End Single Product -->
 	        					</div>
