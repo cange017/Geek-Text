@@ -24,13 +24,16 @@ class Author(models.Model):
 class Book(models.Model):
     image = models.ImageField(upload_to='staticImages')
     title = models.CharField(max_length=100)
-    author = models.ForeignKey('Author', on_delete=models.CASCADE) #Author needs to be foreing key: ForeingKey? Tied to Author's biography
+    author = models.ForeignKey('Author', on_delete=models.CASCADE, related_name='books') #Author needs to be foreing key: ForeingKey? Tied to Author's biography
     rating = models.IntegerField(null=True) #Static variable as a counter
     genre = models.CharField(max_length=50)
     topSeller = models.BooleanField(null=True) #based on a count of rating being >n?
     price = models.DecimalField(max_digits=5, decimal_places=2)
     releaseDate = models.DateTimeField()
-    Publisher = models.CharField(max_length=50)
+    publisher = models.CharField(max_length=50)
     description = models.TextField() #Book Details App only
     #comments = models.ForeignKey('Comments',  on_delete=models.CASCADE,null=True)
     #comments = models.TextField()
+
+    def __str__(self):#shows values on Admin page
+        return self.title

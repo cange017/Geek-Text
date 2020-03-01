@@ -33,19 +33,12 @@
         							<div class="product__info__main">
         								<h1>{{book.title}}</h1>
         								<div class="product-reviews-summary d-flex">
-        									<ul class="rating-summary d-flex">
-    											<li><i class="zmdi zmdi-star-outline"></i></li>
-    											<li><i class="zmdi zmdi-star-outline"></i></li>
-    											<li><i class="zmdi zmdi-star-outline"></i></li>
-    											<li class="off"><i class="zmdi zmdi-star-outline"></i></li>
-    											<li class="off"><i class="zmdi zmdi-star-outline"></i></li>
-        									</ul>
+        									<a href="#related-books"><p>By {{book.author}}</p></a>
         								</div>
         								<div class="price-box">
         									<span>${{book.price}}</span>
         								</div>
 										<div class="product__overview">
-											<a href="#related-books"><p >{{book.author}}</p></a>
         									<p>{{book.description}}</p>
         								</div>
         								<div class="box-tocart d-flex">
@@ -89,15 +82,26 @@
         				</div>
         				<div class="product__info__detailed">
 							<div class="pro_details_nav nav justify-content-start" role="tablist">
-	                            <a class="nav-item nav-link active" data-toggle="tab" href="#nav-details" role="tab">Details</a>
+	                            <a class="nav-item nav-link active" data-toggle="tab" href="#nav-details" role="tab">Book Details</a>
+								<a class="nav-item nav-link" data-toggle="tab" href="#nav-author" role="tab">About the Author</a>
 	                            <a class="nav-item nav-link" data-toggle="tab" href="#nav-review" role="tab">Reviews</a>
 	                        </div>
 	                        <div class="tab__container">
 	                        	<!-- Start Single Tab Content -->
 	                        	<div class="pro__tab_label tab-pane fade show active" id="nav-details" role="tabpanel">
 									<div class="description__attribute">
-										<p>{{book.description}}</p>
-										
+										<p><strong>Rating: </strong>{{book.rating}}/5</p>
+										<p><strong>Genre: </strong>{{book.genre}}</p>
+										<p><strong>Author: </strong>{{book.author}}</p>
+										<p><strong>Bio: </strong>{{book.author.bio}}</p>
+										<p><strong>Publisher: </strong>{{book.publisher}}</p>
+										<p><strong>Publishing Date: </strong>{{book.releaseDate}}</p>
+									</div>
+	                        	</div>
+								<div class="pro__tab_label tab-pane fade" id="nav-author" role="tabpanel">
+									<div class="description__attribute">
+										<p><strong>Author: </strong>{{book.author}}</p>
+										<p><strong>Bio: </strong>{{book.author.bio}}</p>
 									</div>
 	                        	</div>
 	                        	<!-- End Single Tab Content -->
@@ -105,6 +109,7 @@
 	                        	<div class="pro__tab_label tab-pane fade" id="nav-review" role="tabpanel">
 									<div class="review__attribute">
 										<h1>Customer Reviews</h1>
+
 										<h2>User1</h2>
 										<div class="review__ratings__type d-flex">
 											<p>{{book.comments}}</p>
@@ -135,11 +140,13 @@
 	                        	<!-- End Single Tab Content -->
 	                        </div>
         				</div>
+						
 						<div id="related-books" class="wn__related__product pt--80 pb--50">
 							<div class="section__title text-center">
 								<h2 class="title__be--2">Related Books</h2>
 							</div>
 							<div class="row mt--60">
+								
 								<div class="productcategory__slide--2 arrows_style owl-carousel owl-theme">
 									<!-- Start Single Product -->
 									<h2 style="color: black;">{{book.title}}</h2>
@@ -147,6 +154,7 @@
 								</div>
 							</div>
 						</div>
+						
         			</div>
         		</div>
         	</div>

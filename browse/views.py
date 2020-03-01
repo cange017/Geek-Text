@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import Book
+from .models import Book, Author
 from django.shortcuts import render, redirect, get_object_or_404
 from users.forms import RegistrationForm, AddressForm, ShipAddressForm, AddCreditForm
 from django.contrib.auth.models import User
@@ -21,6 +21,7 @@ def books(request):
 
 def details(request, id):
     book_detail = get_object_or_404(Book, id=id)
+    #print (Author.objects.books.all())
     return render(request, 'book-details.html', {'book': book_detail})
 
 # def books_by_author(self, author):
