@@ -20,7 +20,7 @@
         <div class="page-shop-sidebar left--sidebar bg--white section-padding--lg">
         	<div class="container">
         		<div class="row">
-        			 <div class="col-lg-3 col-12 order-2 order-lg-1 md-mt-40 sm-mt-40">
+        			 {% comment %} <div class="col-lg-3 col-12 order-2 order-lg-1 md-mt-40 sm-mt-40">
         				<div class="shop__sidebar">
         					<aside class="wedget__categories poroduct--cat">
         						<h3 class="wedget__title">Book Categories</h3>
@@ -89,7 +89,7 @@
 								</div>
         					</aside>
         				</div>
-					</div> 
+					</div>  {% endcomment %}
 					
 					<div class="col-lg-9 col-12 order-1 order-lg-2" style="margin-left:auto; margin-right: auto">
 						<div class="row">
@@ -189,7 +189,7 @@
                                           
 											<strong class="d-block text-gray-dark" style="color:dodgerblue;"> by {{ book.author }}  <strong style="color:slategray;">
 												<span style="color:silver ;"> | </span> {{ book.releaseDate|date }}
-												<span style="color:silver ;"> | </span> <span style="color:tan ;"> {{ book.Publisher }}</span></strong>
+												<span style="color:silver ;"> | </span> <span style="color:tan ;"> {{ book.publisher }}</span></strong>
 											
 											</strong>
 											</strong>
