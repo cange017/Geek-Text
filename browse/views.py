@@ -19,7 +19,7 @@ from django.db.models import Q
 def home(request):
      books = Book.objects.all().order_by('releaseDate')[:4]
      return render(request, 'home.html', {'books': books})
- 
+
 def books(request):
     books = Book.objects.all().order_by('title')
     return render(request, 'book-grid.html', {'books': books})
@@ -29,23 +29,21 @@ class SearchResultsView(ListView):#ListView,
     template_name = 'search_results.html'
     #queryset = Book.objects.filter(author__name__icontains='Miguel') # new
     def get_queryset(self): # 
-        
+
         query = self.request.GET.get('q')
         criteria = self.request.GET.get('criteria')
         object_list = Book.objects.filter(
              Q(author__name__icontains=query) | Q(title__icontains=query)#author is foreingKey field
-        ).filter ( Q(Publisher__icontains=criteria))
+        ).filter ( Q(publisher__icontains=criteria))
         return object_list
-  
+
 
 def details(request, id):
     book_detail = get_object_or_404(Book, id=id)
-    #print (Author.objects.books.all())
-    return render(request, 'book-details.html', {'book': book_detail})
+    related_books = Book.objects.filter(
+             Q(author__name__icontains=book_detail.author))
+    return render(request, 'book-details.html',{'related_books': related_books ,'book': book_detail} )
 
-# def books_by_author(self, author):
-#     return Book.objects.filter(author=self.author).values_list(author,flat=True)
-#   a.book_set.all()
 
 def wishlist(request):
     return render(request, 'wishlist.html')
@@ -66,7 +64,7 @@ def myaccount(request):
         form3 = AddCreditForm(instance = instance3)
 
     return render(request, 'my-account.html', { 'form2':form2, 'form3':form3 }) 
-    
+
 def register(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
@@ -75,7 +73,7 @@ def register(request):
             return redirect('login')            
     else:
         form = RegistrationForm()
-        
+
     return render(request, 'register.html', {'form': form})
 
 def logoutView(request):
@@ -91,9 +89,9 @@ def address(request):
             return redirect('myaccount')
     else:
         form = AddressForm()
-        
+
     return render(request, 'address.html', {'form': form}) 
-      
+
 def shipaddress(request):
     if request.method =='POST':
         form = ShipAddressForm(request.POST)
@@ -102,7 +100,7 @@ def shipaddress(request):
             return redirect('myaccount')
     else:
         form = ShipAddressForm()
-        
+
     return render(request, 'shipaddress.html', {'form': form}) 
 
 def addcard(request):
@@ -113,7 +111,7 @@ def addcard(request):
             return redirect('myaccount')
     else:
         form = AddCreditForm()
-        
+
     return render(request, 'addcard.html', {'form': form}) 
 
 def cart(request):

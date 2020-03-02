@@ -140,7 +140,35 @@
 	                        	<!-- End Single Tab Content -->
 	                        </div>
         				</div>
-						
+
+						{% comment %} <div id="related-books" class="wn__related__product pt--80 pb--50">
+							<div class="section__title text-center">
+								<h2 class="title__be--2">Related Books</h2>
+							</div>
+							<div class="row mt--60">
+								<ul>
+								{% for book in related_books %}
+							<li>	
+									<div class="product__thumb">
+											{% if book.image %}
+	        								<a class="first__img" data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><img src="{{book.image.url}}" alt="product images"></a>
+	        								<a class="second__img animation1"  data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><img src="{{book.image.url}}" alt="product images"></a>
+	        								{% endif %}
+										</div>
+									<!-- Start Single Product -->
+									<h2 style="color: black;">{{book.title}}</h2>
+									<!-- Start Single Product -->
+
+							</li>
+
+								{% empty %}
+
+								<h3>This author doesn't have any other books</h3>
+								{% endfor %}
+							</ul>
+							</div>
+						</div> {% endcomment %}
+
 						<div id="related-books" class="wn__related__product pt--80 pb--50">
 							<div class="section__title text-center">
 								<h2 class="title__be--2">Related Books</h2>
@@ -149,12 +177,33 @@
 								
 								<div class="productcategory__slide--2 arrows_style owl-carousel owl-theme">
 									<!-- Start Single Product -->
-									<h2 style="color: black;">{{book.title}}</h2>
+									
+									<div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
+									{% for book in related_books %}
+										<div class="product__thumb">
+											{% if book.image %}
+	        								<a class="first__img" data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><img src="{{book.image.url}}" alt="product images"></a>
+	        								<a class="second__img animation1"  data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><img src="{{book.image.url}}" alt="product images"></a>
+	        								{% endif %}
+										</div>
+										<div class="product__content content--center content--center">
+											<h4><a href="{% url 'details' book.id%}">{{book.title}}</a></h4>
+											<ul class="prize d-flex">
+												<li>${{book.price}}</li>
+											</ul>
+										</div>
+										{% empty %}
+
+								<h3>This author doesn't have any other books</h3>
+										{% endfor %}
+									</div>
+									
+									
 									<!-- Start Single Product -->
 								</div>
+								
 							</div>
 						</div>
-						
         			</div>
         		</div>
         	</div>
@@ -174,4 +223,4 @@
 				<span>close</span>
 			</div>
 		</div>
-{% endblock content %}
+{% endblock content %} 
