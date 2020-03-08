@@ -4,7 +4,7 @@ from .models import CustomUser, Address, ShippingAddress, Payment
 from django.db import models
 from django.forms import formset_factory
 from creditcards.models import CardNumberField, CardExpiryField, SecurityCodeField
-
+from django.contrib.auth import get_user_model
 
 
 
@@ -21,25 +21,25 @@ class RegistrationForm(UserCreationForm):
 
 class AccountUpdateForm(forms.ModelForm):
 
-	class Meta:
-		model = CustomUser
-		fields = ('email', 'username', )
+    class Meta:
+        model = CustomUser
+        fields = ('email', 'username', )
 
-	def clean_email(self):
-		email = self.cleaned_data['email']
-		try:
-			account = CustomUser.objects.exclude(pk=self.instance.pk).get(email=email)
-		except CustomUser.DoesNotExist:
-			return email
-		raise forms.ValidationError('Email "%s" is already in use.' % account)
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        try:
+            account = CustomUser.objects.exclude(pk=self.instance.pk).get(email=email)
+        except CustomUser.DoesNotExist:
+            return email
+        raise forms.ValidationError('Email "%s" is already in use.' % account)
 
-	def clean_username(self):
-		username = self.cleaned_data['username']
-		try:
-			account = CustomUser.objects.exclude(pk=self.instance.pk).get(username=username)
-		except CustomUser.DoesNotExist:
-			return username
-		raise forms.ValidationError('Username "%s" is already in use.' % username)
+    def clean_username(self):
+        username = self.cleaned_data['username']
+        try:
+            account = CustomUser.objects.exclude(pk=self.instance.pk).get(username=username)
+        except CustomUser.DoesNotExist:
+            return username
+        raise forms.ValidationError('Username "%s" is already in use.' % username)
 
 class CustomUserChangeForm(UserChangeForm):
 
@@ -68,7 +68,7 @@ class ShipAddressForm(forms.ModelForm):
         fields = ('address', 'city', 'state', 'zipcode')    
 
 class AddCreditForm(forms.ModelForm):
-    name_on_card = forms.CharField(max_length=50)
+    name_on_card = models.CharField(max_length=50)
     cc_number = CardNumberField(('card number'))
     cc_expiry = CardExpiryField(('expiration date'))
     cc_code = SecurityCodeField(('security code'))
