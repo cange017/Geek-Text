@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'browse',
     'creditcards',
+    'i18naddress',
 ]
 
 AUTH_USER_MODEL = 'users.CustomUser'

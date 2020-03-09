@@ -63,7 +63,6 @@
                                         </div>
                                         <hr />
                                         
-                                        
                                         <div class="row">
                                             <div class="col-sm-3 col-md-2 col-5">
                                                 <label style="font-weight:bold;">Username</label>
@@ -93,7 +92,8 @@
                                         <table class="table table-striped">
                                             <thead>
                                             <tr>
-                                                <th>Address</th>
+                                                <th>Country</th>
+                                                <th>Street Address</th>
                                                 <th>City</th>
                                                 <th>State</th>
                                                 <th>Zip Code</th>
@@ -102,17 +102,16 @@
                                             <tbody>
                                             {% for address in addresses%}
                                                     <tr>    
-                                                          <td>  {{address.address}}</td>
+                                                          <td>  {{address.country_code}}</td>
+                                                          <td>  {{address.street_address}}</td>
                                                           <td>  {{address.city}}</td>
-                                                          <td>  {{address.state}}</td>
-                                                          <td>  {{address.zipcode}}</td>
+                                                          <td>  {{address.country_area}}</td>
+                                                          <td>  {{address.postal_code}}</td>
                                                     </tr>
                                             {% endfor %}
                                             </tbody>
                                         </table>
                                         </div>
-                                            
-												
                                     </div>
                                  </div>
                                  <hr />
@@ -150,7 +149,8 @@
                                         <table class="table table-striped">
                                             <thead>
                                             <tr>
-                                                <th>Address</th>
+                                                <th>Country</th>
+                                                <th>Street Address</th>
                                                 <th>City</th>
                                                 <th>State</th>
                                                 <th>Zip Code</th>
@@ -159,10 +159,11 @@
                                             <tbody>
                                             {% for ship in ships%}
                                                     <tr>    
-                                                          <td>  {{ship.address}}</td>
+                                                          <td>  {{ship.country_code}}</td>
+                                                          <td>  {{ship.street_address}}</td>
                                                           <td>  {{ship.city}}</td>
-                                                          <td>  {{ship.state}}</td>
-                                                          <td>  {{ship.zipcode}}</td>
+                                                          <td>  {{ship.country_area}}</td>
+                                                          <td>  {{ship.postal_code}}</td>
                                                     </tr>
                                             {% endfor %}
                                             </tbody>

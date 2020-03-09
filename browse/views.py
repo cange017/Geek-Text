@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Book
 from django.shortcuts import render, redirect, get_object_or_404
-from users.forms import RegistrationForm, AddressForm, ShipAddressForm, AddCreditForm
+from users.forms import RegistrationForm, AddCreditForm, AddressForm, ShipAddressForm
 from django.contrib.auth.forms import UserChangeForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
