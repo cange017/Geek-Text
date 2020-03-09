@@ -38,6 +38,9 @@ urlpatterns = [
     url(r'^address/$', views.address, name = 'address'),
     url(r'^shipaddress/$', views.shipaddress, name = 'shipaddress'),
     url(r'^addcard/$', views.addcard, name = 'addcard'),
+    url(r'^delete_card/(?P<pk>\d+)/$', views.CardDelete.as_view(), name='delete_card'),
+    url(r'^delete_shipping/(?P<pk>\d+)/$', views.ShippingDelete.as_view(), name='delete_shipping'),
+    url(r'^delete_home/(?P<pk>\d+)/$', views.HomeDelete.as_view(), name='delete_home'),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root= settings.STATIC_ROOT)

@@ -97,6 +97,7 @@
                                                 <th>City</th>
                                                 <th>State</th>
                                                 <th>Zip Code</th>
+                                                <th>Modify</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -107,6 +108,7 @@
                                                           <td>  {{address.city}}</td>
                                                           <td>  {{address.country_area}}</td>
                                                           <td>  {{address.postal_code}}</td>
+                                                          <td> <a href="{% url 'delete_home'  pk=address.pk%}" style="color:blue">Delete Address</font></center></a> </td>
                                                     </tr>
                                             {% endfor %}
                                             </tbody>
@@ -126,6 +128,7 @@
                                                 <th>Card Number</th>
                                                 <th>Expiration</th>
                                                 <th>Security Code</th>
+                                                <th>Modify</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -135,6 +138,7 @@
                                                           <td>  {{card.cc_number}}</td>
                                                           <td>  {{card.cc_expiry}}</td>
                                                           <td>  {{card.cc_code}}</td>
+                                                          <td> <a href="{% url 'delete_card'  pk=card.pk%}" style="color:blue">Delete Payment</font></center></a> </td>
                                                     </tr>
                                             {% endfor %}
                                             </tbody>
@@ -154,6 +158,7 @@
                                                 <th>City</th>
                                                 <th>State</th>
                                                 <th>Zip Code</th>
+                                                <th>Modify</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -164,6 +169,7 @@
                                                           <td>  {{ship.city}}</td>
                                                           <td>  {{ship.country_area}}</td>
                                                           <td>  {{ship.postal_code}}</td>
+                                                          <td> <a href="{% url 'delete_shipping'  pk=ship.pk%}" style="color:blue">Delete Address</font></center></a> </td>
                                                     </tr>
                                             {% endfor %}
                                             </tbody>

@@ -11,6 +11,7 @@ from users.models import Address, ShippingAddress, Payment
 from django.forms import formset_factory
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.views.generic.edit import DeleteView
 
 def home(request):
      books = Book.objects.all().order_by('releaseDate')[:4]
@@ -89,6 +90,21 @@ def addcard(request):
         form = AddCreditForm()
         
     return render(request, 'addcard.html', {'form': form}) 
+
+class CardDelete(DeleteView):
+    model = Payment
+    success_url = reverse_lazy('myaccount')
+    template_name = 'delete_card.html'
+
+class ShippingDelete(DeleteView):
+    model = ShippingAddress
+    success_url = reverse_lazy('myaccount')
+    template_name = 'delete_shipping.html'
+
+class HomeDelete(DeleteView):
+    model = Address
+    success_url = reverse_lazy('myaccount')
+    template_name = 'delete_home.html'
 
 def cart(request):
     return render(request, 'cart.html')
