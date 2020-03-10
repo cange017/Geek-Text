@@ -49,7 +49,7 @@ class ShippingAddress(models.Model):
     postal_code = models.CharField("Zip Code", blank=True, null= True, max_length=100)
 
     class Meta:
-        verbose_name_plural = 'ShipAddress'
+        verbose_name_plural = 'Shipping Address'
 
 class CustomUser(AbstractUser):
     email = models.EmailField(verbose_name = "email", max_length=254, unique = True)

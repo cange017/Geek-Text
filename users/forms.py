@@ -76,7 +76,7 @@ class ShipAddressForm(forms.ModelForm):
         fields = ('country_code', 'street_address',  'city', 'country_area','postal_code'  )  
         
     def clean(self):
-        clean_data = super(AddressForm, self).clean()
+        clean_data = super(ShipAddressForm, self).clean()
         validation_rules = get_validation_rules(clean_data)
         try:
             valid_address = normalize_address(clean_data)
