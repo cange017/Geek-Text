@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.html import escape#for image on Admin page
 
+
 # Create your models here.
 
 
