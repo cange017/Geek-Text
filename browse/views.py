@@ -59,17 +59,6 @@ def myaccount(request):
         return render(request, 'my-account.html', { 'user': user,'addresses': addresses,'cards': cards, 'ships':ships })
     return render(request, 'my-account.html') 
     
-    if Address.objects.count()>0:
-        instance = Address.objects.get(pk=1)
-        form = AddressForm(instance=instance)
-    if ShippingAddress.objects.count()>0:
-        instance2 = ShippingAddress.objects.get(pk=1)
-        form2 = ShipAddressForm(instance = instance2)
-    if Payment.objects.count()>0:
-        instance3 = Payment.objects.get(pk=1)
-        form3 = AddCreditForm(instance = instance3)
-
-    return render(request, 'my-account.html', { 'form2':form2, 'form3':form3 }) 
 
 def register(request):
     if request.method == 'POST':
