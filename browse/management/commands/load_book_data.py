@@ -57,7 +57,7 @@ class Command(BaseCommand):
             submission_date = UTC.localize(datetime.strptime(raw_submission_date, DATETIME_FORMAT))
             book.releaseDate = submission_date
             book.save()
-            book.Publisher = row['publisher']
+            book.publisher = row['publisher']
             book.description = row['description']
             comments = row['comments']#gets an array of comments tokenized by pipes "|"
             commentsArr = [name for name in comments.split('| ') if name]

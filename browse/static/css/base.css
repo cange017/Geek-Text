@@ -5,8 +5,10 @@
 div#slideshow {
     background-image: url(../books2.jpg);
      /* opacity: 0.3; */
-     background-size: cover;
-     background-repeat: inherit;
+    background-size: cover;
+    background-repeat: inherit;
+    background-color: rgba(255,255,255,0.6);
+    background-blend-mode: lighten;
 }
 
 .container-fluid {
@@ -16,3 +18,18 @@ div#slideshow {
 #about-padding {
     padding-top: 2%;
 }
+
+.rating  {
+   
+    font-size: 30px;
+    color:yellow;
+ }
+
+ .goodRate
+
+.rating > span:hover:before {
+    content: "\2605";
+    position: absolute;
+    color:blue;
+    font-size: 30px;
+ }
