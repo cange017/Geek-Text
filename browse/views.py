@@ -29,12 +29,13 @@ def wishlist(request):
     return render(request, 'wishlist.html')
 
 def myaccount(request):
-    user = request.user
-    addresses =  Address.objects.filter(users = user)
-    ships = ShippingAddress.objects.filter(users = user)
-    cards = Payment.objects.filter(user = user)
-
-    return render(request, 'my-account.html', { 'user': user,'addresses': addresses,'cards': cards, 'ships':ships }) 
+    if request.user.is_authenticated:
+        user = request.user
+        addresses =  Address.objects.filter(users = user)
+        ships = ShippingAddress.objects.filter(users = user)
+        cards = Payment.objects.filter(user = user)
+        return render(request, 'my-account.html', { 'user': user,'addresses': addresses,'cards': cards, 'ships':ships })
+    return render(request, 'my-account.html') 
     
 def register(request):
     if request.method == 'POST':
