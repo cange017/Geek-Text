@@ -16,8 +16,6 @@ from django.views.generic import TemplateView, ListView#generic templates for se
 from .models import Book
 from django.db.models import Q
 
-
-
 def home(request):
      books = Book.objects.all().order_by('releaseDate')[:4]
      return render(request, 'home.html', {'books': books})
@@ -39,13 +37,14 @@ class SearchResultsView(ListView):#ListView,
         ).filter ( Q(publisher__icontains=criteria))
         return object_list
 
-
 def details(request, id):
     book_detail = get_object_or_404(Book, id=id)
-    related_books = Book.objects.filter(
-             Q(author__name__icontains=book_detail.author))
+    related_books = []
+    # if the book count of particular author is greater than one
+    if (Book.objects.filter(Q(author__name__icontains=book_detail.author)).count() > 1):
+        # show all books by that author except for the current book
+        related_books = Book.objects.filter(Q(author__name__icontains=book_detail.author)).exclude(Q(title__icontains= book_detail.title))
     return render(request, 'book-details.html',{'related_books': related_books ,'book': book_detail} )
-
 
 def wishlist(request):
     return render(request, 'wishlist.html')
