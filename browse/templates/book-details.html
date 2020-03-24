@@ -141,45 +141,14 @@
 	                        </div>
         				</div>
 
-						{% comment %} <div id="related-books" class="wn__related__product pt--80 pb--50">
-							<div class="section__title text-center">
-								<h2 class="title__be--2">Related Books</h2>
-							</div>
-							<div class="row mt--60">
-								<ul>
-								{% for book in related_books %}
-							<li>	
-									<div class="product__thumb">
-											{% if book.image %}
-	        								<a class="first__img" data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><img src="{{book.image.url}}" alt="product images"></a>
-	        								<a class="second__img animation1"  data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><img src="{{book.image.url}}" alt="product images"></a>
-	        								{% endif %}
-										</div>
-									<!-- Start Single Product -->
-									<h2 style="color: black;">{{book.title}}</h2>
-									<!-- Start Single Product -->
-
-							</li>
-
-								{% empty %}
-
-								<h3>This author doesn't have any other books</h3>
-								{% endfor %}
-							</ul>
-							</div>
-						</div> {% endcomment %}
-
 						<div id="related-books" class="wn__related__product pt--80 pb--50">
 							<div class="section__title text-center">
 								<h2 class="title__be--2">Related Books</h2>
 							</div>
 							<div class="row mt--60">
-								
-								<div class="productcategory__slide--2 arrows_style owl-carousel owl-theme">
 									<!-- Start Single Product -->
-									
-									<div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
 									{% for book in related_books %}
+									<div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
 										<div class="product__thumb">
 											{% if book.image %}
 	        								<a class="first__img" data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><img src="{{book.image.url}}" alt="product images"></a>
@@ -193,17 +162,19 @@
 											</ul>
 										</div>
 										{% empty %}
-
-								<h3>This author doesn't have any other books</h3>
-										{% endfor %}
+										<p style="margin-left: auto; margin-right: auto">This author doesn't have any other books</p> 
+										
 									</div>
-									
+									{% endfor %}
 									
 									<!-- Start Single Product -->
-								</div>
+								
+								
 								
 							</div>
+							
 						</div>
+						
         			</div>
         		</div>
         	</div>
