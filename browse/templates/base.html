@@ -273,9 +273,10 @@
 		</footer>
 		<!-- //Footer Area -->
 		<!-- QUICKVIEW PRODUCT -->
+		{% for book in books%}
 		<div id="quickview-wrapper">
 		    <!-- Modal -->
-		    <div class="modal fade" id="productmodal" tabindex="-1" role="dialog">
+		    <div class="modal fade" id="productmodal{{book.id}}" tabindex="-1" role="dialog">
 				<div class="modal-dialog modal__container" role="document">
 		            <div class="modal-content">
 		                <div class="modal-header modal__header">
@@ -321,6 +322,7 @@
 		        </div>
 		    </div>
 		</div>
+		{% endfor %}
 		<!-- END QUICKVIEW PRODUCT -->
 	</div>
 	<!-- //Main wrapper -->

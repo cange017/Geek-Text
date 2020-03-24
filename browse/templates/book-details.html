@@ -14,21 +14,23 @@
                 </div>
             </div>
         </div>
-<div class="maincontent bg--white pt--80 pb--55">
+		<div class="maincontent bg--white pt--80 pb--55">
         	<div class="container">
         		<div class="row">
         			<div class="col-lg-9 col-12" style="margin-left:auto; margin-right: auto">
         				<div class="wn__single__product">
         					<div class="row">
         						<div class="col-lg-6 col-12">
-        							<div class="wn__fotorama__wrapper">
+									<a class="second__img animation1"  data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal{{book.id}}">        							<div class="wn__fotorama__wrapper">
 	        							<div class="fotorama wn__fotorama__action" data-nav="thumbs">
 											  {% if book.image %}
-		        							  <a><img href="#" src="{{book.image.url}}" alt=""></a>
+											<img src="{{book.image.url}}" alt="product images">
 											  {% endif %}
-	        							</div>
+										</div>
+									</a>
         							</div>
-        						</div>
+								</div>
+								
         						<div class="col-lg-6 col-12">
         							<div class="product__info__main">
         								<h1>{{book.title}}</h1>
@@ -178,7 +180,55 @@
         			</div>
         		</div>
         	</div>
-        </div>
+		</div>
+		<div id="quickview-wrapper">
+		    <!-- Modal -->
+		    <div class="modal fade" id="productmodal{{book.id}}" tabindex="-1" role="dialog">
+				<div class="modal-dialog modal__container" role="document">
+		            <div class="modal-content">
+		                <div class="modal-header modal__header">
+		                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		                </div>
+		                <div class="modal-body">
+		                    <div class="modal-product">
+		                        <!-- Start product images -->
+		                        <div class="product-images">
+		                            <div class="main-image images">
+		                                {% if book.image %}
+		        							<a><img src="{{book.image.url}}" alt=""></a>
+										{% endif %}
+		                            </div>
+		                        </div>
+		                        <!-- end product images -->
+		                        <div class="product-info">
+		                            <h1>{{book.title}}</h1>
+		                            <div class="rating__and__review">
+		                                <ul class="rating">
+		                                    <li><span class="ti-star"></span></li>
+		                                    <li><span class="ti-star"></span></li>
+		                                    <li><span class="ti-star"></span></li>
+		                                    <li><span class="ti-star"></span></li>
+		                                    <li><span class="ti-star"></span></li>
+		                                </ul>
+		                            </div>
+		                            <div class="price-box-3">
+		                                <div class="s-price-box">
+		                                    <span class="new-price">${{book.price}}</span>
+		                                </div>
+		                            </div>
+		                            <div class="quick-desc">
+		                               {{book.description}}
+		                            </div>
+		                            <div class="addtocart-btn">
+		                                <a href="#">Add to cart</a>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
         <!-- End main Content -->
 		<!-- Start Search Popup -->
 		<div class="box-search-content search_active block-bg close__top">
@@ -194,4 +244,5 @@
 				<span>close</span>
 			</div>
 		</div>
+		
 {% endblock content %} 
