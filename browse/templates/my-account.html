@@ -1,0 +1,197 @@
+﻿{% extends './base.html' %}
+{% block content %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://bootswatch.com/4/simplex/bootstrap.min.css"/>
+
+
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="bradcaump__inner text-center">
+					<h2 class="bradcaump-title">My Account</h2>
+					<nav class="bradcaump-content">
+						
+					</nav>
+				</div>
+			</div>
+		</div>
+<!-- End Bradcaump area -->
+<!-- Start My Account Area -->
+				{% if user.is_authenticated %}
+
+								<div class="ml-auto">
+                                    <input type="button" class="btn btn-primary d-none" id="btnDiscard" value="Discard Changes" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                                <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="basicInfo-tab" data-toggle="tab" href="#basicInfo" role="tab" aria-controls="basicInfo" aria-selected="true">Basic Info</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="payment-tab" data-toggle="tab" href="#payment" role="tab" aria-controls="payment" aria-selected="false">Payment</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a class="nav-link" id="shipping-tab" data-toggle="tab" href="#shipping" role="tab" aria-controls="shipping" aria-selected="false">Shipping</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content ml-1" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
+                                        
+
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">First Name</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                {{ user.first_name }}
+                                            </div>
+                                        </div>
+                                        <hr />
+
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Last Name</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                {{ user.last_name }}
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Username</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                {{ user.username }}
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Email</label>
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                {{ user.email }}
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Home Address </label><br </br>
+                                                <a href="{% url 'address' %}" style="color:blue">Add Address</a> 
+                                                
+                                            </div>
+                                            <div class="col-md-8 col-6">
+                                                <div class="container">
+                                        <table class="table table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th>Country</th>
+                                                <th>Street Address</th>
+                                                <th>City</th>
+                                                <th>State</th>
+                                                <th>Zip Code</th>
+                                                <th>Modify</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for address in addresses%}
+                                                    <tr>    
+                                                          <td>  {{address.country_code}}</td>
+                                                          <td>  {{address.street_address}}</td>
+                                                          <td>  {{address.city}}</td>
+                                                          <td>  {{address.country_area}}</td>
+                                                          <td>  {{address.postal_code}}</td>
+                                                          <td> <a href="{% url 'delete_home'  pk=address.pk%}" style="color:blue">Delete Address</font></center></a> </td>
+                                                    </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                        </div>
+                                    </div>
+                                 </div>
+                                 <hr />
+
+                                    </div>
+                                    <div class="tab-pane fade" id="payment" role="tabpanel" aria-labelledby="payment-tab">
+                                    <div class="container">
+                                        <table class="table table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th>Name on Card</th>
+                                                <th>Card Number</th>
+                                                <th>Expiration</th>
+                                                <th>Security Code</th>
+                                                <th>Modify</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for card in cards%}
+                                                    <tr>    
+                                                          <td>  {{card.name_on_card}}</td>
+                                                          <td>  {{card.cc_number}}</td>
+                                                          <td>  {{card.cc_expiry}}</td>
+                                                          <td>  {{card.cc_code}}</td>
+                                                          <td> <a href="{% url 'delete_card'  pk=card.pk%}" style="color:blue">Delete Payment</font></center></a> </td>
+                                                    </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                        </div>
+											 <center><font size="+2"> <a href="{% url 'addcard' %}" style="color:blue">Add Payment</font></center></a>
+                                        
+                                    </div>
+									<div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
+                                       
+										 <div class="container">
+                                        <table class="table table-striped">
+                                            <thead>
+                                            <tr>
+                                                <th>Country</th>
+                                                <th>Street Address</th>
+                                                <th>City</th>
+                                                <th>State</th>
+                                                <th>Zip Code</th>
+                                                <th>Modify</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for ship in ships%}
+                                                    <tr>    
+                                                          <td>  {{ship.country_code}}</td>
+                                                          <td>  {{ship.street_address}}</td>
+                                                          <td>  {{ship.city}}</td>
+                                                          <td>  {{ship.country_area}}</td>
+                                                          <td>  {{ship.postal_code}}</td>
+                                                          <td> <a href="{% url 'delete_shipping'  pk=ship.pk%}" style="color:blue">Delete Address</font></center></a> </td>
+                                                    </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                        </div>
+                                          <center><font size="+2"> <a href="{% url 'shipaddress' %}" style="color:blue">Add Shipping Address</font></center></a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+				{% else %}
+						</div>
+                        </div>
+						
+					<p><center><font size="+40">Welcome! <a href="{% url 'login' %}" style="color:blue">Please Login</a> </font></center> </p>
+				{% endif %}
+</section>
+<!-- End My Account Area -->
+{% endblock %}

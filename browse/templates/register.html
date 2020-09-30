@@ -1,0 +1,63 @@
+{% extends './base.html' %}
+{% block content %}
+
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="bradcaump__inner text-center">
+					<h2 class="bradcaump-title">Register</h2>
+					<nav class="bradcaump-content">
+						
+					</nav>
+				</div>
+			</div>
+		</div>
+	
+<!-- End Bradcaump area -->
+<!-- Start My Account Area -->
+{% if not user.is_authenticated %}
+
+<section class="my_account_area pt--80 pb--55 bg--white">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-12">
+				<div class="my__account__wrapper">
+					<h3 class="account__title">Register</h3>
+						<div class="account__form">
+							<div class="input__box">
+								<form method="post" novalidate>
+
+                                    <div class="account__form">
+                                        <div class="input__box">
+                                            {% csrf_token %}
+                                            <table border="1">
+                                            {{ form }}
+                                            </table>
+                                         <div class="form__btn">
+                                             <button type="submit">Register</button>
+                                    </div>
+                                </form>
+							</div>
+							<a class="login" href="{% url 'login' %}" style="color:blue">Already have an account? Login here!</a>
+						</div>
+					</div>
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+            {% else %}
+						</div>
+                        </div>
+						
+					<p><center><font size="+20">You are already logged in!  </font>
+                    <form class = "logout-link" action = "{% url 'logout' %}" method = "post">
+												{% csrf_token %}
+												<button type = "submit">Logout</button>
+											</center> </form>
+                    </p>
+
+				
+                {% endif %}
+</section>
+<!-- End My Account Area -->
+{% endblock %}
