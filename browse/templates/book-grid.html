@@ -79,40 +79,28 @@
 					</div>  {% endcomment %}
 					
 					<div class="col-lg-9 col-12 order-1 order-lg-2" style="margin-left:auto; margin-right: auto">
-						<div class="row">
-							<form action="{% url 'search_results' %}" method="get" class="form-inline my-2 my-lg-0">
-								<select name="criteria" class="form-control" style=margin-right:10px;">
-								  <option value="" selected="selected">Choose here</option>
-								  <option value="pearson">pearson</option>
-								  <option value="wiley">wiley</option>
-								  <option value="fiat">Fiat</option>
-								  <option value="Artech House">Artech House</option>
-								  <option value="Sage Publishing">Sage Publishing</option>
-								  <option value="Douglas & McIntyre">Douglas & McIntyre</option>
-								  <option value="Emerald Group Publishing">Emerald Group Publishing</option>
-								</select> 
-								<input name="q" class="form-control mr-sm-2" type="text" placeholder="Search by title, author" aria-label="Search">
-								<button type="submit" class="btn btn-outline-success my-2 my-sm-0" >Search</button>
-							  </form>
-
-						</div> 
         				<div class="row">
         					<div class="col-lg-12">
 								<div class="shop__list__wrapper d-flex flex-wrap flex-md-nowrap justify-content-between">
 									<div class="shop__list nav justify-content-center" role="tablist">
-			                            <a class="nav-item nav-link active" data-toggle="tab" href="#nav-grid" role="tab"><i class="fa fa-th"></i></a>
-			                            <a class="nav-item nav-link" data-toggle="tab" href="#nav-list" role="tab"><i class="fa fa-list"></i></a>
+			                            <a class="nav-item nav-link" data-toggle="tab" href="#nav-grid" role="tab"><i class="fa fa-th"></i></a>
+			                            <a class="nav-item nav-link active" data-toggle="tab" href="#nav-list" role="tab"><i class="fa fa-list"></i></a>
 			                        </div>
-			                        <p>Showing book results</p>
 			                        <div class="orderby__wrapper">
-			                        	<span>Sort By</span>
-			                        	<select class="shot__byselect">
-			                        		<option>Default sorting (title)</option>
-			                        		<option>Author</option>
-			                        		<option>Price</option>
-			                        		<option>Book rating</option>
-			                        		<option>Release date</option>
-			                        	</select>
+											<form action="{% url 'search_results' %}" method="get" class="form-inline my-2 my-lg-0">
+												<select name="criteria" class="form-control" id="search-text">
+												  <option value="" selected="selected">Choose here</option>
+												  <option value="pearson">Pearson</option>
+												  <option value="wiley">Wiley</option>
+												  <option value="fiat">Fiat</option>
+												  <option value="Artech House">Artech House</option>
+												  <option value="Sage Publishing">Sage Publishing</option>
+												  <option value="Douglas & McIntyre">Douglas & McIntyre</option>
+												  <option value="Emerald Group Publishing">Emerald Group Publishing</option>
+												</select> 
+												<input id="search-text" name="q" class="form-control mr-sm-2" type="text" placeholder="Search by title, author" aria-label="Search">
+												<button id="search-text" type="submit" class="btn btn-outline-success my-2 my-sm-0" >Search</button>
+											  </form>
 			                        </div>
 		                        </div>
         					</div>
@@ -125,7 +113,7 @@
 		        					<div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
 			        					<div class="product__thumb">
 											{% if book.image %}
-	        								<a class="first__img" data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><img src="{{book.image.url}}" alt="product images"></a>
+	        								<a class="first__img" id="new-additions" data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal"><img src="{{book.image.url}}" alt="product images"></a>
 	        								<a class="second__img animation1"  data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal{{book.id}}"><img src="{{book.image.url}}" alt="product images"></a>
 	        								{% endif %}
 										</div>
@@ -174,7 +162,7 @@
 	        								{% endif %}
 										</div>
 	        							<div class="content">
-											<h2><a href="{% url 'details' book.id%}">{{book.title}}</a></h2>
+											<h4><a href="{% url 'details' book.id%}">{{book.title}}</a></h4>
 											<strong class="d-block text-gray-dark" style="color:dodgerblue;"> by {{ book.author }}  <strong style="color:slategray;">
 												<span style="color:silver ;"> | </span> {{ book.releaseDate|date }}
 												<span style="color:silver ;"> | </span> <span style="color:tan ;"> {{ book.publisher }}</span></strong>
@@ -182,18 +170,16 @@
 											</strong>
 											</strong>
 	        								
-	        								<ul class="rating d-flex">
-												
-											
+	        								<ul id="rating" class="rating d-flex">
+												<li><strong>Rating: </strong>{{book.rating}}/5</strong></li>
+												<!--
                                                 {% for value in books.rating|make_list %}
                                               
 	        									<li ><span class="rating">☆</span></li> 
-                                                {% endfor %}
-                                               
-											
+                                                {% endfor %} -->
 	        								</ul>
 	        								<ul class="prize__box">
-	        									<li>${{book.price}}</li>
+	        									<li><strong>${{book.price}}</strong></li>
 	        								</ul>
 	        								
 	        								<ul class="cart__action d-flex">

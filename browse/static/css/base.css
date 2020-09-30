@@ -20,12 +20,10 @@ div#slideshow {
 }
 
 .rating  {
-   
-    font-size: 30px;
-    color:yellow;
- }
-
- .goodRate
+    font-size: 1em;
+    color: black;
+    font-family: "Poppins", sans-serif;
+}
 
 .rating > span:hover:before {
     content: "\2605";
@@ -33,3 +31,11 @@ div#slideshow {
     color:blue;
     font-size: 30px;
  }
+
+ #new-additions img {
+     height: 26em;
+ }
+
+#search-text {
+    font-family: "Poppins", sans-serif;
+}

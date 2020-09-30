@@ -8,7 +8,7 @@ from django.utils.html import escape#for image on Admin page
 class Comments(models.Model):# I'm not sure about this being it's own class
     text=  models.TextField(null=True)
     def __str__(self):#shows values on Admin page
-       return self.text
+       return self.text 
     
 
 class User(models.Model):
@@ -33,7 +33,7 @@ class Book(models.Model):
     releaseDate = models.DateTimeField()
     publisher = models.CharField(max_length=50)
     description = models.TextField() #Book Details App only
-    #comments = models.ForeignKey('Comments',  on_delete=models.CASCADE,null=True)
+    #comments = models.ForeignKey('Comments', default='Awesome!', on_delete=models.CASCADE,null=True)
     #comments = models.TextField()
 
     def __str__(self):#shows values on Admin page

@@ -1,7 +1,5 @@
 
 {% extends './base.html' %}
-
-        <div class="slider-area brown__nav slider--15 slide__activation slide__arrow01 owl-carousel owl-theme">
 {% block content %}
 <!-- Start Slider area -->
         	<!-- Start Single Slide -->
@@ -10,15 +8,15 @@
 	            			<div class="slider__content">
 		            			<div class="contentbox">
 		            				<h2>Buy <span>your </span></h2>
-		            				<h2>favourite <span>Book </span></h2>
-		            				<h2>from <span>Here </span></h2>
+		            				<h2>favorite <span>book </span></h2>
+		            				<h2>from <span>here! </span></h2>
 				                   	<a class="shopbtn" href="{% url 'books'%}">shop now</a>
 		            			</div>
 	            			</div>
 	            		</div>
 	            	</div>
 	            </div>
-            </div>
+            
             <!-- End Single Slide -->
         	
             <!-- End Single Slide -->
@@ -43,7 +41,7 @@
 						<div class="col-lg-3 col-md-4 col-sm-6 col-12">
 							<div class="product__thumb">
 								{% if book.image %}
-								<a class="first__img" data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal{{book.id}}"><img src="{{ book.image.url }}" alt="product image"></a>
+								<a class="first__img" id="new-additions" data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal{{book.id}}"><img src="{{ book.image.url }}" alt="product image"></a>
 								<a class="second__img animation1" data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" href="#productmodal{{book.id}}"><img src="{{ book.image.url }}" alt="product image"></a>
 								{% endif %}
 							</div>

@@ -17,7 +17,7 @@ from .models import Book
 from django.db.models import Q
 
 def home(request):
-     books = Book.objects.all().order_by('releaseDate')[:4]
+     books = Book.objects.all().order_by('releaseDate')[:7]
      return render(request, 'home.html', {'books': books})
 
 def books(request):
